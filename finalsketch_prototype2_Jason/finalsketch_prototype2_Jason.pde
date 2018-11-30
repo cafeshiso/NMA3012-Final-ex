@@ -29,20 +29,20 @@ DialogLine[] dialogLines =
   new DialogLine("A5", "Are you sure you want to keep sleeping? There's lots to do and experience.", "Sleep More#A6", "Wake Up#A4" ), 
   new DialogLine("A6", "You decided to sleep more. Eventually the excess amount of sleep puts you in sleep paralysis. You wake up but your body is half conscious and you're lucid dreaming of demons and your biggest fears. You suffer a fatal heart attack and seizure in your paralyzed state, because an otherwordly force has smited you for being lazy.", "Game Over. Start over again?#A1"), 
   //
-  new DialogLine("B1", "You didn't miss any alarms at all this morning, Good job! Finally, you have one thing of your life on track! You head out of bed and realize that today is a work day. You shuffle into your work clothes frantically and realize you'll be late if you don't leave in 5 minutes. Do you...", "Fix your hair and leave#B2", "Eat something quick then leave#B3", "Leave right now#B4"),
-  new DialogLine("B2", "You fixed your hair and left your house. However, this doesn't leave you time to eat. Rushing to the subway, you miss it by 5 minutes. Maybe you shouldn't have done your hair and left earlier, and now you're hungry. Good job champ!","Wait for the next train#B4","Buy food#B5","Call for an Uber#B6"),
-  new DialogLine("B3", "After grabbing something light to eat, you head out. However, this leaves your looks terribly disheveled, with no possible way to cover it up. Rushing to the subway, you miss it by 5 minutes. Maybe you shouldn't have eaten and left earlier, and now you're unpresentable. Good job champ!","Wait for the next train#B4","Call for an Uber#B6"),
-  new DialogLine("B4", "The train arrives earlier than expected! A few minutes after the last one. You board and sit down. It's an hour travel time to work and because it's morning, you know the subway will be packed the stop after yours. At the next stop, a pregnant woman enters.","Give up seat for her like a lawful good citizen#D1","Sit, because you know its a long journey. Somebody else might offer up their seat#D2"),
-  new DialogLine ("B5","You enter the cafe near your subway station. Why would you get breakfast when you're heading to work in cafe? Anyways, you get your usual, a cappucino and a bagel. Your phone rings in your pocket.","Pick up#D3","Ignore#D4"),  
+  new DialogLine("B1", "You didn't miss any alarms at all this morning, Good job! Finally, you have one thing of your life on track! You head out of bed and realize that today is a work day. You shuffle into your work clothes frantically and realize you'll be late if you don't leave in 5 minutes. Do you...", "Fix your hair and leave#B2", "Eat something quick then leave#B3", "Leave right now#B4"), 
+  new DialogLine("B2", "You fixed your hair and left your house. However, this doesn't leave you time to eat. Rushing to the subway, you miss it by 5 minutes. Maybe you shouldn't have done your hair and left earlier, and now you're hungry. Good job champ!", "Wait for the next train#B4", "Buy food#B5", "Call for an Uber#B6"), 
+  new DialogLine("B3", "After grabbing something light to eat, you head out. However, this leaves your looks terribly disheveled, with no possible way to cover it up. Rushing to the subway, you miss it by 5 minutes. Maybe you shouldn't have eaten and left earlier, and now you're unpresentable. Good job champ!", "Wait for the next train#B4", "Call for an Uber#B6"), 
+  new DialogLine("B4", "The train arrives earlier than expected! A few minutes after the last one. You board and sit down. It's an hour travel time to work and because it's morning, you know the subway will be packed the stop after yours. At the next stop, a pregnant woman enters.", "Give up seat for her like a lawful good citizen#D1", "Sit, because you know its a long journey. Somebody else might offer up their seat#D2"), 
+  new DialogLine ("B5", "You enter the cafe near your subway station. Why would you get breakfast when you're heading to work in cafe? Anyways, you get your usual, a cappucino and a bagel. Your phone rings in your pocket.", "Pick up#D3", "Ignore#D4"), 
   new DialogLine("B6", "You called for an Uber. It arrives promptly, and you get in. Your driver welcomes you and says nothing else.", "Start conversation#BU1", "Keep Silent#BU2" ), 
   //
-  new DialogLine("BU1", "'So, you've been driving alot? The weather today is pretty nice.' but he doesn't reply back. You keep silent for the rest of the journey.", "1 Star(WIP)#BU4","5 Stars#BU3"),
-  new DialogLine("BU2", "The ride continues in silence as whatever playlist the driver has on is playing. Eventually, you reach your destination,", "1 Star#BU3","5 Stars,BU3"),
-  new DialogLine("BU3", "Satisfied with your rating, you continue on the rest of your day. You think about whether things would change if you rated him differently, but somethings aren't meant to be in your control. You think about it more, and shove it to the side.","Head to work#E1","Forget work, who needs to go when there's the world to explore#D5"),
+  new DialogLine("BU1", "'So, you've been driving alot? The weather today is pretty nice.' but he doesn't reply back. You keep silent for the rest of the journey.", "1 Star(WIP)#BU4", "5 Stars#BU3"), 
+  new DialogLine("BU2", "The ride continues in silence as whatever playlist the driver has on is playing. Eventually, you reach your destination,", "1 Star#BU3", "5 Stars,BU3"), 
+  new DialogLine("BU3", "Satisfied with your rating, you continue on the rest of your day. You think about whether things would change if you rated him differently, but somethings aren't meant to be in your control. You think about it more, and shove it to the side.", "Head to work#E1", "Forget work, who needs to go when there's the world to explore#D5"), 
   //new DialogLine("BU4", "      `
- //C
- //D
- //E
+  //C
+  //D
+  //E
   new DialogLine("E1", "Welcome to work!", "Start over(Work in Progress)#A1" ), 
   new DialogLine("8", "You're crushed by its weight and died", "Start over from square one sucker#7"), 
   new DialogLine("9", "Critical hit! It flinches and winces in pain!", "Attack once more!#10"), 
@@ -68,7 +68,7 @@ void setup ()
 
   // start point is 7 - see <a href="http://www.atariarchives.org/adventure/chapter2.php" target="_blank" rel="nofollow">http://www.atariarchives.org/adventure/chapter2.php</a>
   currentLine = dialogTree.get("A1");
-  globalSectionNumber = "7";
+  globalSectionNumber = "A1";
   dialog.add(currentLine.line);
   state=startScreen;
 
@@ -87,6 +87,7 @@ void draw () {
     break; 
   case play:
     play();
+    //Conditions();
     break;
     //case about;
 
@@ -182,6 +183,34 @@ void play() {
     String [] myArray = split(ch, "#");  
     text(toChoose++ + ": " + myArray[0], width/2, y);
     y += 22;
+  }
+  //for (DialogLine dl : dialogLines)
+  //{
+  //  if (dl.id=="A1") {
+  //    t1.resize(0, 250);
+  //    image(t1, width/2, 200);
+  //  }
+  //  if (dl.id=="A4") {
+  //    t2.resize(0, 250);
+  //    image(t2, width/2-200, 200);
+  //  }
+  //  // dialogTree.put(dl.id, dl);
+  //}
+  
+  switch(globalSectionNumber){
+  
+    case "A1":
+      t1.resize(0, 250);
+      image(t1, width/2, 200);
+      break;
+      
+    case "A4":
+      t2.resize(0, 250);
+      image(t2, width/2-200, 200);
+      break;
+      
+    default:
+      break;
   }
 
   // for testing: 
