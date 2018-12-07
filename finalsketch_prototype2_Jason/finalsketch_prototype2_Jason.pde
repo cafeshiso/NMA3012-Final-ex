@@ -1,4 +1,3 @@
-// 11/30/18 due, finished titlecard+bio. To progress for now, you have to wakeup at 9, be late(Not Leave immediately), and call an uber for farthest ending.
 //borrowed from https://forum.processing.org/two/discussion/9562/simple-choose-your-own-adventure
 // ------------------------------------------------------------------
 
@@ -25,7 +24,7 @@ DialogLine[] dialogLines =
   new DialogLine("A1", "Welcome weary dreamer, are you lost?", "Yes#A2", "No#A3"), 
   new DialogLine("A2", "Let me help you find your way. There's going to be a couple of different paths you can take however, keep in mind that there will be consequences for picking bad choices. Don't be a couch potato, contribute to society will ya?", "Wake Up#A4", "Keep Sleeping#A5" ), 
   new DialogLine("A3", "Don't lie, I think you are.", "OK#A2" ), 
-  new DialogLine("A4", "You roll out of bed. Theres sunlight faintly peering through your window. You flip over the phone that you dropped on the floor during your sleep. What time is it?", "9:00AM#B1", "12:00PM#C1", "4:00PM#C2" ), 
+  new DialogLine("A4", "You roll out of bed. Theres sunlight faintly peering through your window. You flip over the phone that you dropped on the floor during your sleep. What time is it?", "9:00AM#B1", "4:00PM#C2" ), 
   new DialogLine("A5", "Are you sure you want to keep sleeping? There's lots to do and experience.", "Sleep More#A6", "Wake Up#A4" ), 
   new DialogLine("A6", "You decided to sleep more. Eventually the excess amount of sleep puts you in sleep paralysis. You wake up but your body is half conscious and you're lucid dreaming of demons and your biggest fears. You suffer a fatal heart attack and seizure in your paralyzed state, because an otherwordly force has smited you for being lazy.", "Game Over. Start over again?#A1"), 
   //
@@ -36,19 +35,29 @@ DialogLine[] dialogLines =
   new DialogLine ("B5", "You enter the cafe near your subway station. Why would you get breakfast when you're heading to work in cafe? Anyways, you get your usual, a cappucino and a bagel. Your phone rings in your pocket.", "Pick up#D3", "Ignore#D4"), 
   new DialogLine("B6", "You called for an Uber. It arrives promptly, and you get in. Your driver welcomes you and says nothing else.", "Start conversation#BU1", "Keep Silent#BU2" ), 
   //
-  new DialogLine("BU1", "'So, you've been driving alot? The weather today is pretty nice.' but he doesn't reply back. You keep silent for the rest of the journey.", "1 Star(WIP)#BU4", "5 Stars#BU3"), 
-  new DialogLine("BU2", "The ride continues in silence as whatever playlist the driver has on is playing. Eventually, you reach your destination,", "1 Star#BU3", "5 Stars,BU3"), 
+  new DialogLine("BU1", "'So, you've been driving alot? The weather today is pretty nice.' but he doesn't reply back. You keep silent for the rest of the journey.", "1 Star#BU4", "5 Stars#BU3"), 
+  new DialogLine("BU2", "The ride continues in silence as whatever playlist the driver has on is playing. Eventually, you reach your destination,", "1 Star#BU3", "5 Stars#BU3"), 
   new DialogLine("BU3", "Satisfied with your rating, you continue on the rest of your day. You think about whether things would change if you rated him differently, but somethings aren't meant to be in your control. You think about it more, and shove it to the side.", "Head to work#E1", "Forget work, who needs to go when there's the world to explore#D5"), 
-  //new DialogLine("BU4", "      `
+  new DialogLine("BU4", "He notices your rating for him on your phone, and sneers at you. 'Really? You think its THAT easy?' You get the gut feeling that he's dangerous and might brandish a knife... ","Make a run for it #BU5"," Apologize #BU6"),
+ 
+  new DialogLine("BU5", "You sprint out of the Uber straight into an area to hide. The driver, confused, drives off to his next client. It seems like you avoided danger? Sometimes, it's bad to jump the gun on assumptions... or jump the knife.","Head to work#E2", "Forget work, who needs to go when there's the world to explore#D5"), 
+  new DialogLine("BU6", "'Sorry, my finger slipped.' You frantically say, 'Sorry for the rating, I'll tip you instead!' and your thumb goes for the $1.00 tip, but you mess up. Your thumb types one extra zero.... 'You have tipped $10.00'.","Head to work#E2", "Forget work, who needs to go when there's the world to explore#D5"), 
   //C
+  new DialogLine("C2","You glance over at your phone. It says 4:00PM. It seems that you've missed your work shift. You get a phone call...","Pick up#D3b", "Ignore#D4"),
   //D
+  new DialogLine("D1", "You get up and signal to her that your seat is offered. She shakes her head in sign that it's okay, and that you can sit back down. However somebody rushes to the empty spot where you last left.","Continue#E1"),
+  new DialogLine("D2", "You sit in your seat and pretend to sleep. When you crack your eyes slightly open, you notice that she isn't really pregnant, but is carrying a beer belly. You go through the rest of the ride to work.","Continue#E1"),
   //E
-  new DialogLine("E1", "Welcome to work!", "Start over(Work in Progress)#A1" ), 
-  new DialogLine("8", "You're crushed by its weight and died", "Start over from square one sucker#7"), 
-  new DialogLine("9", "Critical hit! It flinches and winces in pain!", "Attack once more!#10"), 
-  new DialogLine("10", "You win!", "Restart#7"), 
+  new DialogLine("D3", "'HEY WHERE ARE YOU? WE NEED YOU HERE ASAP, GET YOUR BUTT OVER HERE", "You leave ASAP#B6","Hang up and Ignore#D4"),
+  new DialogLine("D3b", "'HEY WHERE ARE YOU? WE NEED YOU HERE ASAP, GET YOUR BUTT OVER HERE", "Take a hike, its 4:00PM#D4","Hang up and Ignore#D4"),
+  new DialogLine("D4", "Congratulations, you receive a prompt email notifying your forced resignment of your job","Start Again?#A1"),
+  new DialogLine("E1", "Welcome to work! You head to clock in, drop your belongings and sling some lattes. Good job! You diligently work through the day until a certain customer arrives. She carries herself highly, and rudely orders and peers over the bar counter. 'You better make this GOOD! This is an expensive drink and. LESS. ICE'", "Fight her#D4", "Suck it up and make it#Eb2","Spit in her drink#E3" ), 
+    new DialogLine("E2", "Welcome to work! You head to clock in, drop your belongings and sling some lattes. Good job! You diligently work through the day completely fine with no hiccups!","Continue#W1"),
+     new DialogLine("Eb2", "You diligently work through the day completely fine with no hiccups!","Continue#W1"),
+      new DialogLine("E3", "You subtly drop saliva in her drink and mix it. You question the integrity of your actions, but other than that... You diligently work through the day completely fine with no hiccups!","Continue#W1"),
+  new DialogLine("W1", "You've made it! The best possible ending!", "Start Again?#A1"), 
   //
-};
+  };
 // The dialog lines indexed by their id, for easy lookup
 HashMap<String, DialogLine> dialogTree = new HashMap<String, DialogLine>();
 // The line currently displayed
@@ -56,7 +65,7 @@ DialogLine currentLine;
 // The dialog so far
 ArrayList<String> dialog = new ArrayList<String>();
 // 
-PImage t1, t2, t3;
+PImage t1, t2, t3,bed,sink,phone,subway,bfood,insub,work,end,win,uber;
 void setup ()
 {
   size(1280, 720);
@@ -75,6 +84,16 @@ void setup ()
   t1= loadImage("title1.JPG");
   t2= loadImage("title2.JPG");
   t3= loadImage("title3.JPG");
+  bed=loadImage("bed.jpg");
+  sink=loadImage("sink.JPG");
+  phone=loadImage("phone.jpg");
+  subway=loadImage("subway.jpg");
+  bfood=loadImage("bfood.jpg");
+  insub=loadImage("insub.jpg");
+  work=loadImage("work.jpg");
+  end=loadImage("end.jpg");
+  win=loadImage("win.jpg");
+ uber=loadImage("uber.jpg");
 }
 
 void draw () {
@@ -200,15 +219,100 @@ void play() {
   switch(globalSectionNumber){
   
     case "A1":
-      t1.resize(0, 250);
-      image(t1, width/2, 200);
+      bed.resize(0, 250);
+      image(bed, width/2-180, 250);
       break;
       
+    case "B2":
+      sink.resize(0, 250);
+      image(sink, width/2-180, 250);
+      break;
+     
+       
     case "A4":
-      t2.resize(0, 250);
-      image(t2, width/2-200, 200);
+      phone.resize(0, 250);
+      image(phone, width/2-180, 250);
       break;
+     case "B1":
+      phone.resize(0, 250);
+      image(phone, width/2-180, 250);
+      break;
+    case "C2":
+      phone.resize(0, 250);
+      image(phone, width/2-180, 250);
+      break;
+    
+  
+      case "B3":
+      bfood.resize(0, 250);
+      image(bfood, width/2-180, 250);
+      break;  
+      case "B4":
+     subway.resize(0, 250);
+      image(subway, width/2-180, 250);
+      break;     
+        
+       case "D1":
+     insub.resize(0, 250);
+      image(insub, width/2-180, 250);
+      break;        
+      case "D2":
+     insub.resize(0, 250);
+      image(insub, width/2-180, 250);
+      break;     
+    case "E1":
+     work.resize(0, 250);
+      image(work, width/2-180, 250);
+      break;      
+      case "E2":
+     work.resize(0, 250);
+      image(work, width/2-180, 250);
+      break;     
+      case "Eb2":
+     work.resize(0, 250);
+      image(work, width/2-180, 250);
+      break;      
+      case "E3":
+     work.resize(0, 250);
+      image(work, width/2-180, 250);
+      break; 
       
+      case "D4":
+     end.resize(0, 250);
+      image(end, width/2-180, 250);
+      break;
+      case "W1":
+        win.resize(0, 250);
+      image(win, width/2-180, 250);
+      break; 
+   case "BU1":
+        uber.resize(0, 250);
+      image(uber, width/2-180, 250);
+      break; 
+   case "BU2":
+        uber.resize(0, 250);
+      image(uber, width/2-180, 250);
+      break; 
+   case "BU3":
+        uber.resize(0, 250);
+      image(uber, width/2-180, 250);
+      break; 
+   case "BU4":
+        uber.resize(0, 250);
+      image(uber, width/2-180, 250);
+      break; 
+   case "BU5":
+        uber.resize(0, 250);
+      image(uber, width/2-180, 250);
+      break; 
+   case "BU6":
+        uber.resize(0, 250);
+      image(uber, width/2-180, 250);
+      break; 
+   
+    
+    
+    
     default:
       break;
   }
