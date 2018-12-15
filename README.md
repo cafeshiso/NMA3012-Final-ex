@@ -35,4 +35,7 @@ https://processing.org/reference/image_.html
 
 
 # SCREENSHOTS
+![Scheme](finalsketch_prototype2_Jason/data/ss.jpg)
+![Scheme](finalsketch_prototype2_Jason/data/ss1.jpg)
+![Scheme](finalsketch_prototype2_Jason/data/ss2.jpg)
 
